@@ -110,14 +110,14 @@ public class AppliConverter extends Application {
     }
 
     private void ajouteKelvin(Pane root) {
-        HBox hbFarhen = new HBox(20);
-        hbFarhen.setPadding(new Insets(10, 10, 0, 10));
+        HBox hbKelvin = new HBox(20);
+        hbKelvin.setPadding(new Insets(10, 10, 0, 10));
         Label labelK = new Label("Kelvin");
         this.textFieldK  = new TextField();
-        hbFarhen.getChildren().addAll(labelK, this.textFieldK);
+        hbKelvin.getChildren().addAll(labelK, this.textFieldK);
         // On connecte un controleur       
-        this.textFieldF.setOnKeyReleased(new ControleurTFF(this.temperature, this));
-        root.getChildren().add(hbFarhen);
+        this.textFieldK.setOnKeyReleased(new ControleurTFF(this.temperature, this));
+        root.getChildren().add(hbKelvin);
     }
 
     private void ajouteBoutons(Pane root){
