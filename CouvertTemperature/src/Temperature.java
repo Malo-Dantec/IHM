@@ -24,6 +24,10 @@ public class Temperature {
         return this.valeurCelcius * 1.8 + 32;
     }
 
+    public double valeurKelvin() {
+        return this.valeurCelcius + 273.15;
+    }
+
     /**
      * @param  nouvelleValeurCelcius  une tempéraure en degré Celcius (°C)
      */
@@ -38,10 +42,15 @@ public class Temperature {
         double nouvelleValeurCelcius = (nouvelleValeurFahrenheit - 32)/1.8;
         this.valeurCelcius = nouvelleValeurCelcius;
     }
+
+    public void setvaleurKelvin(double nouvelleValeurKelin) {
+        double nouvelleValeurCelcius = nouvelleValeurKelin + 273.15;
+        this.valeurCelcius = nouvelleValeurCelcius;
+    }
     
     @Override
     public String toString(){
-        return this.valeurCelcius+"°C = "+ this.valeurFahrenheit()+"°F";
+        return this.valeurCelcius+"°C = "+ this.valeurFahrenheit()+"°F = " + this.valeurKelvin() + "°K";
     }
 }
 

@@ -21,6 +21,7 @@ public class AppliConverter extends Application {
 
     protected TextField textFieldC ;
     protected TextField textFieldF ;
+    protected TextField textFieldK ;
     private Temperature temperature;
 
     @Override
@@ -38,6 +39,7 @@ public class AppliConverter extends Application {
         this.ajouteTitre(root);
         this.ajouteCelscius(root);
         this.ajouteFahrenheit(root);
+        this.ajouteKelvin(root);
         this.ajouteBoutons(root);
         
         Scene scene = new Scene(root);
@@ -49,6 +51,7 @@ public class AppliConverter extends Application {
     public void effaceTF(){
         this.textFieldF.setText("");
         this.textFieldC.setText("");
+        this.textFieldK.setText("");
     }
     
     public double getValueCelcius() throws NumberFormatException{
@@ -57,11 +60,16 @@ public class AppliConverter extends Application {
 
     public double getValueFahrenheit() throws NumberFormatException{
         return Double.parseDouble(textFieldF.getText());
-    }    
+    }
+
+    public double getValueKelvin() throws NumberFormatException{
+        return Double.parseDouble(textFieldK.getText());
+    }
 
     public void majTF(){
         this.textFieldC.setText(this.temperature.valeurCelcius()+"");
         this.textFieldF.setText(this.temperature.valeurFahrenheit()+"");
+        this.textFieldK.setText(this.temperature.valeurKelvin()+"");
     }
 
     public void quitte(){
@@ -101,16 +109,33 @@ public class AppliConverter extends Application {
         root.getChildren().add(hbFarhen);
     }
 
+    private void ajouteKelvin(Pane root) {
+        HBox hbFarhen = new HBox(20);
+        hbFarhen.setPadding(new Insets(10, 10, 0, 10));
+        Label labelK = new Label("Kelvin");
+        this.textFieldK  = new TextField();
+        hbFarhen.getChildren().addAll(labelK, this.textFieldK);
+        // On connecte un controleur       
+        this.textFieldF.setOnKeyReleased(new ControleurTFF(this.temperature, this));
+        root.getChildren().add(hbFarhen);
+    }
+
     private void ajouteBoutons(Pane root){
         HBox hbButtons = new HBox(3);
         hbButtons.setPadding(new Insets(10, 10, 10, 10));
         Button buttonReset = new Button("Reset");
         Button buttonQuitter = new Button("Quitter");
+        Button buttonConvertirC = new Button("Convertir °C");
+        Button buttonConvertirF = new Button("Convertir °F");
+        Button buttonConvertirK = new Button("Convertir °K");
         // On connecte des controleurs        
         buttonQuitter.setOnAction(new ControleurBoutonQuitter(this));
         buttonReset.setOnAction(new ControleurBoutonReset(this));
+        buttonConvertirC.setOnAction(new ControleurBoutonConvertirC(this.temperature, this));
+        buttonConvertirF.setOnAction(new ControleurBoutonConvertirF(this.temperature, this));
+        buttonConvertirK.setOnAction(new ControleurBoutonConvertirK(this.temperature, this));
         
-        hbButtons.getChildren().addAll(buttonReset, buttonQuitter);
+        hbButtons.getChildren().addAll(buttonReset, buttonQuitter, buttonConvertirC, buttonConvertirF, buttonConvertirK);
         hbButtons.setAlignment(Pos.BASELINE_RIGHT);
         root.getChildren().add(hbButtons);
     }
