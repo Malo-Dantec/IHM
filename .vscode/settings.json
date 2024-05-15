@@ -1,6 +1,6 @@
 {
     "java.project.sourcePaths": [
-        "CouvertTemperature/src"
+        "TP3/Connexion/src"
     ],
     "java.project.referencedLibraries": [
         "/usr/share/openjfx/lib/javafx.graphics.jar",
