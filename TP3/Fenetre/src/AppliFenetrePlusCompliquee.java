@@ -1,8 +1,6 @@
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Side;
-import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -19,46 +17,26 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.stage.Stage;
 
-public class AppliFenetre extends Application{
+public class AppliFenetrePlusCompliquee extends BorderPane{
 
-    private Label textTop;
-    private Button deco;
-    private Label textCenter;
-    private ComboBox<String> combo;
-    private PieChart pie;
-    private Button prec;
-    private Button suiv;
+    private Button bouton;
 
-    @Override
-    public void init() {
-        this.textTop = new Label("Allo 45 - Module Analyste");
-        textTop.setFont(Font.font("Arial",FontWeight.BOLD, 28));
-        this.deco = new Button("Deconnexion", new ImageView(new Image("file:graphics/user.png")));
-
-        this.textCenter = new Label("Analyse du Sondage sur les habitudes alimentaires");
-        textCenter.setFont(Font.font("Arial",FontWeight.NORMAL, 26));
-        String combo_item[] = {"Pie", "Line", "Bar", "Data", "Localisation", "Area", "Relative"};
-        this.combo = new ComboBox<String>(FXCollections.observableArrayList(combo_item));
-        combo.getSelectionModel().selectFirst();
-        this.pie = new PieChart();
-        pie.setTitle("Que lisez-vous au petit déjeuner ?");
-        pie.getData().setAll(
-        new PieChart.Data("Le journal", 21),
-        new PieChart.Data("Un livre", 3),
-        new PieChart.Data("Le courier", 7),
-        new PieChart.Data("La boîte de céréales", 75));
-        pie.setLegendSide(Side.LEFT);
-        this.prec = new Button("Question précédente", new ImageView(new Image("file:graphics/back.png")));
-        this.suiv = new Button("Question suivante", new ImageView(new Image("file:graphics/next.png")));
-
+    public AppliFenetrePlusCompliquee(Button bouton){
+        super();
+        this.bouton = bouton;
+        this.setTop(top());
+        this.setCenter(center());
+        this.setRight(right());
+        this.setPrefWidth(1000);
     }
 
     public BorderPane top(){
         BorderPane pane = new BorderPane();
+        Label textTop = new Label("Allo 45 - Module Analyste");
+        textTop.setFont(Font.font("Arial",FontWeight.BOLD, 28));
         pane.setLeft(textTop);
-        pane.setRight(deco);
+        pane.setRight(this.bouton);
         pane.setBackground(new Background(new BackgroundFill(Color.BURLYWOOD, CornerRadii.EMPTY, Insets.EMPTY)));
         pane.setPadding(new Insets(10));
         return pane;
@@ -66,6 +44,22 @@ public class AppliFenetre extends Application{
 
     public VBox center(){
         VBox pane = new VBox();
+        Label textCenter = new Label("Analyse du Sondage sur les habitudes alimentaires");
+        textCenter.setFont(Font.font("Arial",FontWeight.NORMAL, 26));
+        String combo_item[] = {"Pie", "Line", "Bar", "Data", "Localisation", "Area", "Relative"};
+        ComboBox<String> combo = new ComboBox<String>(FXCollections.observableArrayList(combo_item));
+        combo.getSelectionModel().selectFirst();
+        PieChart pie = new PieChart();
+        pie.setTitle("Que lisez-vous au petit déjeuner ?");
+        pie.getData().setAll(
+        new PieChart.Data("Le journal", 21),
+        new PieChart.Data("Un livre", 3),
+        new PieChart.Data("Le courier", 7),
+        new PieChart.Data("La boîte de céréales", 75));
+        pie.setLegendSide(Side.LEFT);
+        Button prec = new Button("Question précédente", new ImageView(new Image("file:graphics/back.png")));
+        Button suiv = new Button("Question suivante", new ImageView(new Image("file:graphics/next.png")));
+
         HBox boutton = new HBox(prec, suiv);
         boutton.setSpacing(10);
         pane.getChildren().addAll(textCenter,combo,pie,boutton);
@@ -85,27 +79,5 @@ public class AppliFenetre extends Application{
         pane.setVgap(5);
         pane.setHgap(5);
         return pane;
-    }
-
-    private BorderPane root() {
-        BorderPane pane = new BorderPane();
-        pane.setTop(top());
-        pane.setCenter(center());
-        pane.setRight(right());
-        pane.setPrefWidth(1000);
-        return pane;
-    }
-
-
-    @Override
-    public void start(Stage stage) {
-        Scene scene =new Scene(root());
-        stage.setTitle("Allo 45");
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public static void main(String[] args) {
-        Application.launch(args);
     }
 }

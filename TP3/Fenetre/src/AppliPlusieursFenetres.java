@@ -1,6 +1,8 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -21,8 +23,9 @@ public class AppliPlusieursFenetres extends Application {
     
     @Override
     public void init(){
-        this.btn1 = new Button("Vers la fenêtre 2");        
-        this.btn2 = new Button("Vers la fenetre 1");
+        this.btn1 = new Button("Connexion");
+        this.btn2 = new Button("Deconnexion", new ImageView(new Image("file:graphics/user.png")));        
+        
 
         ControleBouton controleur = new ControleBouton(this);        
         this.btn1.setOnAction(controleur);
@@ -32,7 +35,7 @@ public class AppliPlusieursFenetres extends Application {
     
     @Override
     public void start(Stage stage) {
-        Pane root = new Fenetre1(this.btn1);
+        Pane root = new AppliConnexion(this.btn1);
         this.scene = new Scene(root, 900, 700);
         stage.setScene(scene);
         stage.setTitle("Appli avec deux fenêtres");
@@ -40,12 +43,12 @@ public class AppliPlusieursFenetres extends Application {
     }
  
     public void afficheFenetre1(){
-        Pane root = new Fenetre1(this.btn1);
+        Pane root = new AppliConnexion(this.btn1);
         this.scene.setRoot(root);
     }
     
     public void afficheFenetre2(){
-        Pane root = new Fenetre2(this.btn2);    
+        Pane root = new AppliFenetrePlusCompliquee(this.btn2);    
         this.scene.setRoot(root);
     }
 }

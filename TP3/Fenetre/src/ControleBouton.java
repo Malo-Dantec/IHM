@@ -14,7 +14,7 @@ public class ControleBouton implements EventHandler<ActionEvent>{
     @Override
     public void handle(ActionEvent event){
         Button button = (Button) (event.getSource());
-        if (button.getText().contains("1"))
+        if (button.getText().contains("De"))
             this.appli.afficheFenetre1();
         else
             this.appli.afficheFenetre2();
