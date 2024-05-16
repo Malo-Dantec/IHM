@@ -23,6 +23,8 @@ public class ControleurLettres implements EventHandler<ActionEvent> {
      */
     ControleurLettres(MotMystere modelePendu, Pendu vuePendu){
         // A implémenter
+        this.modelePendu = modelePendu;
+        this.vuePendu = vuePendu;
     }
 
     /**
@@ -33,5 +35,6 @@ public class ControleurLettres implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         // A implémenter
+        
     }
 }
