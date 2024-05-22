@@ -70,9 +70,12 @@ public class AppliJoueur extends Application{
     public GridPane gridPaneCenter() {
         Label labelPseudo = new Label("Pseudo :");
         TextField fieldPseudo = new TextField();
+        fieldPseudo.setPromptText("Entrer votre pseudo");
 
         Label labelMDP = new Label("Mot de passe :");
         PasswordField fieldPassword = new PasswordField();
+        fieldPassword.setPromptText("Entrer votre mot de passe");
+
 
         Label labelPoste = new Label("Poste :");
         String combo_item[] = {"a", "b", "c", "d", "e", "f", "g"};
