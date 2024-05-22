@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Arrays;
 import java.io.File;
 import java.util.ArrayList;
+import javafx.scene.text.FontWeight;
 
 
 /**
@@ -77,6 +78,8 @@ public class Pendu extends Application {
      * le bouton Accueil / Maison
      */    
     private Button boutonMaison;
+
+    private Button boutonInfo;
     /**
      * le bouton qui permet de (lancer ou relancer une partie
      */ 
@@ -87,10 +90,12 @@ public class Pendu extends Application {
      */
     @Override
     public void init() {
-        this.modelePendu = new MotMystere("/usr/share/dict/french", 3, 10, MotMystere.FACILE, 10);
+        this.modelePendu = new MotMystere("./dict/french", 3, 10, MotMystere.FACILE, 10);
         this.lesImages = new ArrayList<Image>();
         this.chargerImages("./img");
+        modeAccueil();
         // A terminer d'implementer
+        
     }
 
     /**
@@ -108,7 +113,16 @@ public class Pendu extends Application {
      */
     private Pane titre(){
         // A implementer          
-        Pane banniere = new Pane();
+        HBox banniere = new HBox();
+        Label titre = new Label("Jeu du Pendu");
+        titre.setFont(Font.font("Arial",FontWeight.NORMAL, 28));
+        Region espace = new Region();
+        HBox.setHgrow(espace, Priority.ALWAYS);
+        banniere.getChildren().addAll(titre, espace, boutonMaison, boutonParametres, boutonInfo);
+        banniere.setBackground(new Background(new BackgroundFill(Color.rgb(230, 230, 250), CornerRadii.EMPTY, Insets.EMPTY)));
+        banniere.setSpacing(2);
+        banniere.setPadding(new Insets(15));
+        banniere.setAlignment(Pos.CENTER);
         return banniere;
     }
 
@@ -153,6 +167,20 @@ public class Pendu extends Application {
     }
 
     public void modeAccueil(){
+        ImageView imageHome = new ImageView(new Image("file:img/home.png"));
+        imageHome.setFitHeight(50);
+        imageHome.setFitWidth(50);
+        this.boutonMaison = new Button("", imageHome);
+
+        ImageView imageParam = new ImageView(new Image("file:img/parametres.png"));
+        imageParam.setFitHeight(50);
+        imageParam.setFitWidth(50);
+        this.boutonParametres = new Button("", imageParam);
+
+        ImageView imageInfo = new ImageView(new Image("file:img/info.png"));
+        imageInfo.setFitHeight(50);
+        imageInfo.setFitWidth(50);
+        this.boutonInfo = new Button("", imageInfo);
         // A implementer
     }
     
