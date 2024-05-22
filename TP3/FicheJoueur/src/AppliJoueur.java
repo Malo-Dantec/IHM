@@ -24,6 +24,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.collections.FXCollections;
 
 public class AppliJoueur extends Application{
     public BorderPane root() {
@@ -74,7 +75,8 @@ public class AppliJoueur extends Application{
         PasswordField fieldPassword = new PasswordField();
 
         Label labelPoste = new Label("Poste :");
-        ComboBox combobox = new ComboBox<String>();
+        String combo_item[] = {"a", "b", "c", "d", "e", "f", "g"};
+        ComboBox<String> combobox = new ComboBox<String>(FXCollections.observableArrayList(combo_item));
         combobox.setMinWidth(120);
 
         ImageView img = new ImageView(new Image("file:img/shrek.jpg"));
