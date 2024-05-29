@@ -1,6 +1,6 @@
 {
     "java.project.sourcePaths": [
-        "TP3/Fenetre/src"
+        "TP4/pendu"
     ],
     "java.project.referencedLibraries": [
         "/usr/share/openjfx/lib/javafx.graphics.jar",

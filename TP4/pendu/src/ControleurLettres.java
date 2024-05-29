@@ -22,9 +22,8 @@ public class ControleurLettres implements EventHandler<ActionEvent> {
      * @param vuePendu vue du jeu
      */
     ControleurLettres(MotMystere modelePendu, Pendu vuePendu){
-        // A implémenter
         this.modelePendu = modelePendu;
-        this.vuePendu = vuePendu;
+        this.vuePendu= vuePendu;
     }
 
     /**
@@ -35,13 +34,5 @@ public class ControleurLettres implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         // A implémenter
-        Button button = (Button) actionEvent.getSource();
-        String letter = button.getText().toUpperCase();
-        int occurrences = modelePendu.essaiLettre(letter.charAt(0));
-        vuePendu.updateDisplay(modelePendu.getMotCrypte(), modelePendu.getNbErreursRestants(), modelePendu.getLettresEssayees());
-
-        if (modelePendu.gagne()) { popUpMessageGagne(); } 
-        else if (modelePendu.perdu()) { popUpMessagePerdu(); }
-        
     }
 }

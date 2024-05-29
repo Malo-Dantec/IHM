@@ -10,41 +10,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.control.ButtonBar.ButtonData ;
 
 import java.util.List;
 import java.util.Arrays;
 import java.io.File;
 import java.util.ArrayList;
-
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
-import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-import javafx.application.Application;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.Side;
-import javafx.scene.paint.Color;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.collections.FXCollections;
 
 /**
  * Vue du jeu du pendu
