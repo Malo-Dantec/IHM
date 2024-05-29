@@ -90,7 +90,7 @@ public class MotMystere {
     private void initMotMystere(String motATrouver, int niveau, int nbErreursMax){
         this.niveau =niveau;
         this.nbEssais=0;
-        this.motATrouver = Dictionnaire.sansAccents(motATrouver).toUpperCase();
+        this.motATrouver = dict.sansAccents(motATrouver).toUpperCase();
         this.motCrypte = "";
         this.lettresEssayees = new HashSet<>();
 
@@ -253,5 +253,4 @@ public class MotMystere {
                this.motCrypte+" nombre de lettres restantes "+this.nbLettresRestantes+
                " nombre d'essais restents: "+this.nbErreursRestantes;
     }
-
 }

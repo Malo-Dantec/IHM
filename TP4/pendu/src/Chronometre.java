@@ -22,7 +22,7 @@ public class Chronometre extends Text{
     /**
      * le contrôleur associé au chronomètre
      */
-    private ControleurChronometre actionTemps;
+    private ControleurChronometre controleur;
 
     /**
      * Constructeur permettant de créer le chronomètre
@@ -31,6 +31,12 @@ public class Chronometre extends Text{
      */
     public Chronometre(){
         // A implémenter
+        this.setText("0:0:0");
+        this.controleur = new ControleurChronometre(this.temps);
+        this.keyFrame = new KeyFrame(Duration.millis(100), this.controleur);
+        this.timeline =new Timeline(keyFrame);
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
     }
 
     /**
@@ -47,6 +53,13 @@ public class Chronometre extends Text{
      */
     public void start(){
         // A implémenter
+        HBox root = new HBox(5);
+        root.getChildren().addAll(new Text("Il s’est ´ecoul´e"), this .temps, new Text("secondes"));
+        Chronometre();
+        Scene scene = new Scene(root, 350, 500);
+        primaryStage.setTitle("Test de chronometre");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     /**
@@ -54,6 +67,7 @@ public class Chronometre extends Text{
      */
     public void stop(){
         // A implémenter
+        this.timeline.stop();
     }
 
     /**
@@ -61,5 +75,7 @@ public class Chronometre extends Text{
      */
     public void resetTime(){
         // A implémenter
+        this.timeline.stop();
+
     }
 }
