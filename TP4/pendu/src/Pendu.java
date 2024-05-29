@@ -117,7 +117,7 @@ public class Pendu extends Application {
         this.pg = new ProgressBar(0);
 
         this.leNiveau = new Text("Niveau " + modelePendu.nomNiveau());
-
+        System.out.println(this.modelePendu.getMotATrouve());
         // A terminer d'implementer
     }
 
@@ -268,8 +268,11 @@ public class Pendu extends Application {
      * raffraichit l'affichage selon les données du modèle
      */
     public void majAffichage() {
-        // A implementer
+        motCrypte.setText(modelePendu.getMotCrypte());
+        dessin.setImage(lesImages.get(modelePendu.getNbEssais()));
+        pg.setProgress((double) modelePendu.getNbEssais() / modelePendu.getNbErreursMax());
     }
+    
 
     /**
      * accesseur du chronomètre (pour les controleur du jeu)
@@ -295,14 +298,18 @@ public class Pendu extends Application {
     }
 
     public Alert popUpMessageGagne() {
-        // A implementer
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Victoire");
+        alert.setHeaderText(null);
+        alert.setContentText("Félicitations ! Vous avez trouvé le mot mystère.");
         return alert;
     }
-
+    
     public Alert popUpMessagePerdu() {
-        // A implementer
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Défaite");
+        alert.setHeaderText(null);
+        alert.setContentText("Dommage ! Vous avez perdu. Le mot était : " + modelePendu.getMotATrouve());
         return alert;
     }
 
