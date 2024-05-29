@@ -35,22 +35,13 @@ public class ControleurLettres implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         // A implémenter
-        // Get the button that was clicked
         Button button = (Button) actionEvent.getSource();
-        // Get the letter from the button text
         String letter = button.getText().toUpperCase();
-
-        // Try the letter
         int occurrences = modelePendu.essaiLettre(letter.charAt(0));
-        
-        // Update the display
         vuePendu.updateDisplay(modelePendu.getMotCrypte(), modelePendu.getNbErreursRestants(), modelePendu.getLettresEssayees());
 
-        if (modelePendu.gagne()) {
-            popUpMessageGagne();
-        } else if (modelePendu.perdu()) {
-            popUpMessagePerdu();
-        }
+        if (modelePendu.gagne()) { popUpMessageGagne(); } 
+        else if (modelePendu.perdu()) { popUpMessagePerdu(); }
         
     }
 }
