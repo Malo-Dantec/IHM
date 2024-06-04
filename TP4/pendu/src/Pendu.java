@@ -138,6 +138,9 @@ public class Pendu extends Application {
 
         this.chrono = new Chronometre();
 
+        System.out.println(this.modelePendu.getMotATrouve());
+
+
         // A terminer d'implementer
     }
 
