@@ -32,11 +32,15 @@ public class RetourAccueil implements EventHandler<ActionEvent> {
      */
     @Override
     public void handle(ActionEvent actionEvent) {
-        Optional<ButtonType> reponse = this.vuePendu.popUpPartieEnCours().showAndWait(); // on lance la fenêtre popup et on attends la réponse
-        // si la réponse est oui
-        if (reponse.isPresent() && reponse.get().equals(ButtonType.YES)){
-            System.out.println("Ok !");
-            this.vuePendu.desacBoutonAccueil();
+        if(this.vuePendu.getBouttonLancerPartie().getText().contains("Nouveau mot")){ // si le bouton lancer partie est actif
+            Optional<ButtonType> reponse = this.vuePendu.popUpPartieEnCours().showAndWait(); // on lance la fenêtre popup et on attends la réponse
+            // si la réponse est oui
+            if (reponse.isPresent() && reponse.get().equals(ButtonType.YES)){
+                this.vuePendu.desacBoutonAccueil();
+                this.vuePendu.modeAccueil();
+            }
+        }
+        else{
             this.vuePendu.modeAccueil();
         }
     }

@@ -11,6 +11,7 @@ import javafx.scene.text.TextAlignment;
  * Permet de gérer un Text associé à une Timeline pour afficher un temps écoulé
  */
 public class Chronometre extends Text{
+    public static Object chrono;
     /**
      * timeline qui va gérer le temps
      */
@@ -30,7 +31,12 @@ public class Chronometre extends Text{
      * Ce constructeur créer la Timeline, la KeyFrame et le contrôleur
      */
     public Chronometre(){
-        // A implémenter
+        super("0:0:0");
+        this.setFont(new Font(24));
+        this.setTextAlignment(TextAlignment.CENTER);
+        this.actionTemps = new ControleurChronometre(this);
+        this.keyFrame = new KeyFrame(Duration.millis(100), this.actionTemps);
+        this.timeline = new Timeline(this.keyFrame);
     }
 
     /**
@@ -39,27 +45,33 @@ public class Chronometre extends Text{
      * @param tempsMillisec la durée depuis à afficher
      */
     public void setTime(long tempsMillisec){
-        // A implémenter
+        long tpsEnSec = tempsMillisec / 1000;
+        long heures = tpsEnSec / 3600;
+        long minutes = (tpsEnSec % 3600) / 60;
+        long secondes = tpsEnSec % 60;
+        this.setText(heures + ":" + minutes + ":" + secondes);
     }
 
     /**
      * Permet de démarrer le chronomètre
      */
     public void start(){
-        // A implémenter
+        this.timeline.setCycleCount(Animation.INDEFINITE);
+        this.timeline.play();
     }
 
     /**
      * Permet d'arrêter le chronomètre
      */
     public void stop(){
-        // A implémenter
+        this.timeline.stop();
     }
 
     /**
      * Permet de remettre le chronomètre à 0
      */
     public void resetTime(){
-        // A implémenter
+        this.actionTemps.reset();
+        this.setText("0:0:0");
     }
 }
