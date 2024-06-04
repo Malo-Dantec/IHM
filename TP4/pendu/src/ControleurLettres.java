@@ -24,6 +24,7 @@ public class ControleurLettres implements EventHandler<ActionEvent> {
     ControleurLettres(MotMystere modelePendu, Pendu vuePendu){
         this.modelePendu = modelePendu;
         this.vuePendu= vuePendu;
+        
     }
 
     /**

@@ -79,6 +79,7 @@ public class MotMystere {
         this.dict = new Dictionnaire(nomFichier,longMin,longMax);
         String motATrouver = dict.choisirMot();
         this.initMotMystere(motATrouver, niveau, nbErreursMax);
+        
     }
 
     /**
@@ -249,9 +250,9 @@ public class MotMystere {
      * @return une chaine de caractère donnant l'état du jeu
      */
     public String toString(){
-        return "Mot a trouve: "+this.motATrouver+" Lettres trouvees: "+
-               this.motCrypte+" nombre de lettres restantes "+this.nbLettresRestantes+
-               " nombre d'essais restents: "+this.nbErreursRestantes;
+        return "Mot a trouve: "+this.motATrouver+" | Lettres trouvees: "+
+               this.motCrypte+" | Nombre de lettres restantes: "+this.nbLettresRestantes+
+               " | Nombre d'essais restants: "+this.nbErreursRestantes;
     }
 
     public String nomNiveau() {

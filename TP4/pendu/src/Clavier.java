@@ -27,7 +27,7 @@ public class Clavier extends TilePane{
      * @param actionTouches le contrôleur des touches
      * @param tailleLigne nombre de touches par ligne
      */
-    public Clavier(String touches, EventHandler<ActionEvent> actionTouches, Color couleurTop) {
+    public Clavier(String touches, EventHandler<ActionEvent> actionTouches) {
         super();
         this.clavier = new ArrayList<>();
         for (char lettre : touches.toCharArray()) {

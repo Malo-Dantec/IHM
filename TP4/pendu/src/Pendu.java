@@ -129,17 +129,16 @@ public class Pendu extends Application {
         this.dessin = new ImageView(new Image("file:./img/pendu0.png"));
 
 
-        this.clavier = new Clavier("ABCDEFGHIJKLMNOPQRSTUVWXYZ-", new ControleurLettres(this.modelePendu, this), couleurTop);
+        this.clavier = new Clavier("ABCDEFGHIJKLMNOPQRSTUVWXYZ-", new ControleurLettres(this.modelePendu, this));
         this.clavier.setMaxWidth(550);
 
         this.pg = new ProgressBar(0);
 
         this.leNiveau = new Text("Niveau " + modelePendu.nomNiveau());
 
+
+
         this.chrono = new Chronometre();
-
-        System.out.println(this.modelePendu.getMotATrouve());
-
 
         // A terminer d'implementer
     }
@@ -311,6 +310,7 @@ public class Pendu extends Application {
      * raffraichit l'affichage selon les données du modèle
      */
     public void majAffichage() {
+        System.out.println(this.modelePendu.getMotATrouve());
         this.motCrypte.setText(this.modelePendu.getMotCrypte());
         this.dessin.setImage(this.lesImages.get(this.modelePendu.getNbErreursMax() - this.modelePendu.getNbErreursRestants()));
         this.pg.setProgress((this.modelePendu.getNbErreursMax() - this.modelePendu.getNbErreursRestants()) * 0.1);
@@ -338,6 +338,7 @@ public class Pendu extends Application {
                 this.modeAccueil();
             }
         }
+        
     }
 
     /**
@@ -430,5 +431,6 @@ public class Pendu extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+        
     }
 }

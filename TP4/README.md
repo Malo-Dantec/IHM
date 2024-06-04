@@ -1,1 +1,1 @@
-# xécuter pendu
+# README expliquant comment lancer votre application
