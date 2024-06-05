@@ -1,0 +1,14 @@
+/* #colorfulGridPane > .grid-cell {
+    -fx-background-color: lightblue;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-padding: 5;
+} */
+
+#hiddenButton {
+    visibility: hidden; /* Le bouton est masqué par défaut */
+}
+
+#parentContainer:hover #hiddenButton {
+    visibility: visible; /* Le bouton devient visible lorsqu'on survole le conteneur parent */
+}
